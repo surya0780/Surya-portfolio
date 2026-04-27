@@ -40,7 +40,6 @@ body {
   width:240px;
   border-radius:20px;
   border:2px solid #00e6c3;
-  box-shadow:0 0 20px rgba(0,255,200,0.5);
 }
 
 /* GRID */
@@ -54,47 +53,15 @@ body {
 /* GLASS */
 .glass {
   background: rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
   padding:25px;
   border-radius:20px;
-  backdrop-filter: blur(10px);
-  transition:0.3s;
   cursor:pointer;
 }
 
-.glass:hover { transform:translateY(-8px); }
-
-/* TAGS */
-.tag {
-  display:inline-block;
-  padding:8px 15px;
-  margin:5px;
-  border-radius:20px;
-  background:#00e6c3;
-  color:black;
-}
-
-/* POPUP */
-#overlay {
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  background:rgba(0,0,0,0.7);
-  display:none;
-  justify-content:center;
-  align-items:center;
-}
-
-.popup {
-  width:400px;
-  background: rgba(255,255,255,0.08);
-  padding:30px;
-  border-radius:20px;
-  border:1px solid rgba(255,255,255,0.2);
-}
-
 /* CONTACT */
-.contact { padding:40px; }
+.contact {
+  padding:40px;
+}
 
 input, textarea {
   width:100%;
@@ -104,10 +71,34 @@ input, textarea {
   border:none;
 }
 
-/* MOBILE */
-@media(max-width:768px){
-  .hero {flex-direction:column;text-align:center;}
+button {
+  padding:12px 20px;
+  border-radius:20px;
+  background:#00e6c3;
+  border:none;
+  cursor:pointer;
 }
+
+/* POPUP */
+#overlay {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.popup {
+  width:400px;
+  background: rgba(255,255,255,0.1);
+  padding:20px;
+  border-radius:15px;
+}
+
 </style>
 </head>
 
@@ -115,55 +106,40 @@ input, textarea {
 
 <!-- HERO -->
 <section class="hero">
-  <div data-aos="fade-right">
+  <div>
     <h3>From Idea to <span>Execution</span></h3>
     <h1>SURYA PRASATH</h1>
     <p>Store Manager | Blinkit</p>
 
     <div class="buttons">
-      <button class="primary" onclick="scrollToProjects()">View Projects</button>
-      <button class="outline" onclick="scrollToContact()">Contact</button>
-      <a href="resume.docx" download>
-        <button class="primary">Download Resume</button>
-      </a>
+      <button onclick="scrollToProjects()">View Projects</button>
+      <button onclick="scrollToContact()">Contact</button>
     </div>
   </div>
 
-  <img src="profile.jpg" data-aos="fade-left">
-</section>
-
-<!-- ABOUT -->
-<section class="grid">
-  <div class="glass" data-aos="fade-up">
-    <h2>About Me</h2>
-    <p>Store Manager at Blinkit with experience in operations, inventory and quick commerce execution.</p>
-  </div>
-
-  <div class="glass" data-aos="fade-up">
-    <h2>Skill</h2>
-    <span class="tag">Excel</span>
-    <span class="tag">Google Sheets</span>
-    <span class="tag">Leadership & Team Development</span>
-    <span class="tag">trategic Planning</span>
-  </div>
+  <img src="profile.jpg">
 </section>
 
 <!-- PROJECTS -->
 <section class="grid" id="projects">
 
-  <div class="glass" onclick="openCard('blinkit')" data-aos="fade-up">
-    <h3>[ Blink Commerce Private Limited </h3>
-    <p>Store manager</p>
+  <div class="glass" onclick="openCard('blinkit')">
+    <h3>Blinkit</h3>
+    <p>Store Manager</p>
   </div>
 
-  <div class="glass" onclick="openCard('dashboard')" data-aos="fade-up">
-    <h3>Shadowfax Private Limited</h3>
-    <p>Team leader</p>
+  <div class="glass" onclick="openCard('shadowfax')">
+    <h3>Shadowfax</h3>
+    <p>Team Leader</p>
   </div>
 
 </section>
 
 <!-- CONTACT -->
+<section id="contact" class="contact">
+
+<h2>Contact Me</h2>
+
 <form action="https://formspree.io/f/xqewovva" method="POST">
 
   <input type="text" name="name" placeholder="Your Name" required>
@@ -176,19 +152,17 @@ input, textarea {
 
 </form>
 
+</section>
+
 <!-- POPUP -->
 <div id="overlay">
   <div class="popup" id="content"></div>
 </div>
 
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
 <script>
-AOS.init({duration:900});
-
 function openCard(type){
 
-  let data="";
+  let data = "";
 
   if(type=="blinkit"){
     data = `
@@ -201,18 +175,21 @@ function openCard(type){
     </p>`;
   }
 
-  if(type=="dashboard"){
+  if(type=="shadowfax"){
     data = `
-    <h2>Shadowfax Private Limited/h2>
-    <p>•	Team Leader at Shadowfax Private Limited with experience in managing delivery operations, improving team performance, and ensuring timely order fulfillment.</p>`;
-    <p>•	Oversee daily operations to ensure efficiency and productivity across departments.</p>`;
+    <h2>Team Leader – Shadowfax</h2>
+    <p>
+    ✔ Managed delivery operations<br>
+    ✔ Improved team performance<br>
+    ✔ Ensured timely deliveries
+    </p>`;
   }
 
   document.getElementById("content").innerHTML = data;
   document.getElementById("overlay").style.display="flex";
 }
 
-document.getElementById("overlay").onclick = ()=>{
+document.getElementById("overlay").onclick = function(){
   document.getElementById("overlay").style.display="none";
 }
 
