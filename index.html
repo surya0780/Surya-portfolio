@@ -5,8 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Surya Prasath</title>
 
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
 <style>
 body {
   margin:0;
@@ -20,41 +18,42 @@ body {
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:60px;
+  padding:50px;
   flex-wrap:wrap;
 }
 
 .hero span { color:#00e6c3; }
 
-.buttons button {
-  margin:10px 10px 0 0;
-  padding:12px 20px;
-  border-radius:25px;
-  cursor:pointer;
-}
-
-.primary {background:#00e6c3;border:none;}
-.outline {border:1px solid #00e6c3;background:transparent;color:white;}
-
 .hero img {
-  width:240px;
+  width:220px;
   border-radius:20px;
   border:2px solid #00e6c3;
 }
 
+/* BUTTONS */
+.buttons button {
+  margin:10px;
+  padding:10px 20px;
+  border-radius:25px;
+  border:none;
+  cursor:pointer;
+}
+
+.primary {background:#00e6c3;}
+.outline {border:1px solid #00e6c3;background:transparent;color:white;}
+
 /* GRID */
 .grid {
   display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
-  gap:30px;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
   padding:40px;
 }
 
-/* GLASS */
 .glass {
   background: rgba(255,255,255,0.05);
-  padding:25px;
-  border-radius:20px;
+  padding:20px;
+  border-radius:15px;
   cursor:pointer;
 }
 
@@ -65,27 +64,24 @@ body {
 
 input, textarea {
   width:100%;
-  padding:15px;
+  padding:12px;
   margin:10px 0;
   border-radius:10px;
   border:none;
 }
 
 button {
-  padding:12px 20px;
-  border-radius:20px;
   background:#00e6c3;
   border:none;
-  cursor:pointer;
+  padding:10px 20px;
+  border-radius:20px;
 }
 
 /* POPUP */
 #overlay {
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
+  top:0;left:0;
+  width:100%;height:100%;
   background:rgba(0,0,0,0.7);
   display:none;
   justify-content:center;
@@ -93,12 +89,12 @@ button {
 }
 
 .popup {
-  width:400px;
-  background: rgba(255,255,255,0.1);
+  background:white;
+  color:black;
   padding:20px;
-  border-radius:15px;
+  border-radius:10px;
+  width:300px;
 }
-
 </style>
 </head>
 
@@ -106,32 +102,51 @@ button {
 
 <!-- HERO -->
 <section class="hero">
-  <div>
-    <h3>From Idea to <span>Execution</span></h3>
-    <h1>SURYA PRASATH</h1>
-    <p>Store Manager | Blinkit</p>
 
-    <div class="buttons">
-      <button onclick="scrollToProjects()">View Projects</button>
-      <button onclick="scrollToContact()">Contact</button>
-    </div>
-  </div>
+<div>
+<h3>From Idea to <span>Execution</span></h3>
+<h1>SURYA PRASATH</h1>
+<p>Store Manager | Blinkit</p>
 
-  <img src="profile.jpg">
+<div class="buttons">
+
+<button onclick="scrollToProjects()">Projects</button>
+<button onclick="scrollToContact()">Contact</button>
+
+<!-- ✅ RESUME -->
+<a href="./resume.docx" download>
+<button class="primary">Download Resume</button>
+</a>
+
+<!-- ✅ WHATSAPP -->
+<a href="https://wa.me/916382799407" target="_blank">
+<button class="primary">WhatsApp</button>
+</a>
+
+<!-- ✅ LINKEDIN -->
+<a href="https://www.linkedin.com/in/surya-prasath-65b79837b" target="_blank">
+<button class="outline">LinkedIn</button>
+</a>
+
+</div>
+</div>
+
+<img src="profile.jpg">
+
 </section>
 
 <!-- PROJECTS -->
 <section class="grid" id="projects">
 
-  <div class="glass" onclick="openCard('blinkit')">
-    <h3>Blinkit</h3>
-    <p>Store Manager</p>
-  </div>
+<div class="glass" onclick="openCard('blinkit')">
+<h3>Blinkit</h3>
+<p>Store Manager</p>
+</div>
 
-  <div class="glass" onclick="openCard('shadowfax')">
-    <h3>Shadowfax</h3>
-    <p>Team Leader</p>
-  </div>
+<div class="glass" onclick="openCard('shadowfax')">
+<h3>Shadowfax</h3>
+<p>Team Leader</p>
+</div>
 
 </section>
 
@@ -142,13 +157,11 @@ button {
 
 <form action="https://formspree.io/f/xqewovva" method="POST">
 
-  <input type="text" name="name" placeholder="Your Name" required>
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Your Email" required>
+<textarea name="message" placeholder="Your Message" required></textarea>
 
-  <input type="email" name="email" placeholder="Your Email" required>
-
-  <textarea name="message" placeholder="Your Message" required></textarea>
-
-  <button type="submit">Send Message</button>
+<button type="submit">Send Message</button>
 
 </form>
 
@@ -156,49 +169,40 @@ button {
 
 <!-- POPUP -->
 <div id="overlay">
-  <div class="popup" id="content"></div>
+<div class="popup" id="content"></div>
 </div>
 
 <script>
 function openCard(type){
 
-  let data = "";
+let data="";
 
-  if(type=="blinkit"){
-    data = `
-    <h2>Store Manager – Blinkit</h2>
-    <p>
-    ✔ Store operations<br>
-    ✔ Inventory tracking<br>
-    ✔ Team handling<br>
-    ✔ Quick commerce execution
-    </p>`;
-  }
-
-  if(type=="shadowfax"){
-    data = `
-    <h2>Team Leader – Shadowfax</h2>
-    <p>
-    ✔ Managed delivery operations<br>
-    ✔ Improved team performance<br>
-    ✔ Ensured timely deliveries
-    </p>`;
-  }
-
-  document.getElementById("content").innerHTML = data;
-  document.getElementById("overlay").style.display="flex";
+if(type=="blinkit"){
+data=`
+<h2>Blinkit</h2>
+<p>Store operations, inventory tracking, and team management in quick commerce.</p>`;
 }
 
-document.getElementById("overlay").onclick = function(){
-  document.getElementById("overlay").style.display="none";
+if(type=="shadowfax"){
+data=`
+<h2>Shadowfax</h2>
+<p>Handled delivery operations and team performance as Team Leader.</p>`;
+}
+
+document.getElementById("content").innerHTML=data;
+document.getElementById("overlay").style.display="flex";
+}
+
+document.getElementById("overlay").onclick=function(){
+this.style.display="none";
 }
 
 function scrollToProjects(){
-  document.getElementById("projects").scrollIntoView({behavior:"smooth"});
+document.getElementById("projects").scrollIntoView({behavior:"smooth"});
 }
 
 function scrollToContact(){
-  document.getElementById("contact").scrollIntoView({behavior:"smooth"});
+document.getElementById("contact").scrollIntoView({behavior:"smooth"});
 }
 </script>
 
