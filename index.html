@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Surya Prasath</title>
 
+<!-- ✅ ICON LIBRARY -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 body {
   margin:0;
@@ -39,8 +42,15 @@ body {
   cursor:pointer;
 }
 
+.buttons i {
+  margin-right:8px;
+}
+
 .primary {background:#00e6c3;}
 .outline {border:1px solid #00e6c3;background:transparent;color:white;}
+
+.fa-whatsapp { color:#25D366; }
+.fa-linkedin { color:#0077b5; }
 
 /* GRID */
 .grid {
@@ -110,22 +120,28 @@ button {
 
 <div class="buttons">
 
-<button onclick="scrollToProjects()">work Experience</button>
+<button onclick="scrollToProjects()">Projects</button>
 <button onclick="scrollToContact()">Contact</button>
 
 <!-- ✅ RESUME -->
-<a href="./resume.docx" download>
-<button class="primary">Download Resume</button>
+<a href="./resume.pdf" download>
+<button class="primary">
+<i class="fa-solid fa-download"></i> Resume
+</button>
 </a>
 
 <!-- ✅ WHATSAPP -->
 <a href="https://wa.me/916382799407" target="_blank">
-<button class="primary">WhatsApp</button>
+<button class="primary">
+<i class="fa-brands fa-whatsapp"></i> WhatsApp
+</button>
 </a>
 
 <!-- ✅ LINKEDIN -->
-<a href="https://www.linkedin.com/in/surya-prasath-65b79837b" target="_blank">
-<button class="outline">LinkedIn</button>
+<a href="https://www.linkedin.com/in/YOUR-ID" target="_blank">
+<button class="outline">
+<i class="fa-brands fa-linkedin"></i> LinkedIn
+</button>
 </a>
 
 </div>
