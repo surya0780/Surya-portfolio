@@ -1,45 +1,177 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Surya Portfolio</title>
-  <style>
-    body { font-family: Arial; margin: 0; background: #111; color: white; }
-    .container { padding: 40px; }
-    h1 { color: #facc15; }
-    .card { background: #1f2937; padding: 20px; border-radius: 10px; margin-top: 20px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f2027;
+  color: white;
+}
+
+.container {
+  padding: 40px;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero img {
+  width: 200px;
+  border-radius: 15px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.card {
+  background: #1c3b44;
+  padding: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.card:hover {
+  background: #25525d;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background: #00c9a7;
+  color: black;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* popup */
+#overlay {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.popup {
+  background: white;
+  color:black;
+  padding: 20px;
+  border-radius: 10px;
+  width: 300px;
+}
+</style>
+
 </head>
+
 <body>
-  <div class="container">
-    <h1>🔥 Surya Prasath</h1>
-    <h3>Store Manager | Blinkit</h3>
 
-    <div class="card">
-      <h2>About Me</h2>
-      <p>1.7 years experience in store operations, team handling, and inventory management.</p>
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <h2>From Idea to Execution</h2>
+      <h1>YOUR NAME</h1>
+      <p>Store Manager | Operations | Data Handling</p>
+
+      <button onclick="openPopup('about')">About Me</button>
     </div>
 
-    <div class="card">
-      <h2>Skills</h2>
-      <ul>
-        <li>Inventory Management</li>
-        <li>Team Handling</li>
-        <li>Operations Management</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>Achievements</h2>
-      <ul>
-        <li>Reduced complaints significantly</li>
-        <li>Maintained weekly targets</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h2>Contact</h2>
-      <p>Email: l.suryaprasath1@gmail.com</p>
-    </div>
+    <img src="https://via.placeholder.com/200">
   </div>
+
+  <!-- PROJECTS -->
+  <div class="grid">
+
+    <div class="card" onclick="openPopup('blinkit')">
+      <h3>Blinkit</h3>
+      <p>Store Manager</p>
+    </div>
+
+    <div class="card" onclick="openPopup('dashboard')">
+      <h3>Dashboard</h3>
+      <p>Google Sheets Automation</p>
+    </div>
+
+    <div class="card" onclick="openPopup('inventory')">
+      <h3>Inventory</h3>
+      <p>Stock Management</p>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- POPUP -->
+<div id="overlay">
+  <div class="popup" id="popupContent"></div>
+</div>
+
+<script>
+
+function openPopup(type) {
+
+  var content = "";
+
+  if(type === "about") {
+    content = `
+      <h2>About Me</h2>
+      <p>Working as Store Manager in Blinkit handling operations and data.</p>
+    `;
+  }
+
+  if(type === "blinkit") {
+    content = `
+      <h2>Blinkit Experience</h2>
+      <p>
+      Managed daily store operations in a quick commerce environment.<br><br>
+      ✔ Inventory tracking<br>
+      ✔ SKU monitoring<br>
+      ✔ Picking & Packing accuracy<br>
+      ✔ Team handling
+      </p>
+    `;
+  }
+
+  if(type === "dashboard") {
+    content = `
+      <h2>Dashboard</h2>
+      <p>Created automated dashboard using Google Sheets and Apps Script.</p>
+    `;
+  }
+
+  if(type === "inventory") {
+    content = `
+      <h2>Inventory System</h2>
+      <p>Handled stock analysis and variance tracking system.</p>
+    `;
+  }
+
+  document.getElementById("popupContent").innerHTML = content;
+  document.getElementById("overlay").style.display = "flex";
+}
+
+document.getElementById("overlay").onclick = function() {
+  this.style.display = "none";
+}
+
+</script>
+
 </body>
 </html>
