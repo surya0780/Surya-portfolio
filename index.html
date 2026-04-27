@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Surya Prasath</title>
 
-<!-- ✅ ICON LIBRARY -->
+<!-- ICONS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -28,47 +28,89 @@ body {
 .hero span { color:#00e6c3; }
 
 .hero img {
-  width:220px;
+  width:230px;
   border-radius:20px;
-  border:2px solid #00e6c3;
+  border:3px solid #00e6c3;
 }
 
 /* BUTTONS */
-.buttons button {
-  margin:10px;
-  padding:10px 20px;
+.btns a {
+  padding:12px 20px;
+  margin:5px;
   border-radius:25px;
-  border:none;
-  cursor:pointer;
+  text-decoration:none;
+  color:white;
+  display:inline-block;
+  font-size:14px;
 }
 
-.buttons i {
-  margin-right:8px;
-}
+.projects { background:#00c9a7; }
+.contact { background:#3b82f6; }
+.resume { background:#f59e0b; }
+.whatsapp { background:#25D366; }
+.linkedin { background:#0077b5; }
 
-.primary {background:#00e6c3;}
-.outline {border:1px solid #00e6c3;background:transparent;color:white;}
-
-.fa-whatsapp { color:#25D366; }
-.fa-linkedin { color:#0077b5; }
-
-/* GRID */
+/* CARDS */
 .grid {
   display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:20px;
   padding:40px;
 }
 
-.glass {
-  background: rgba(255,255,255,0.05);
+.card {
+  background:rgba(255,255,255,0.05);
   padding:20px;
   border-radius:15px;
+  backdrop-filter: blur(10px);
   cursor:pointer;
+  transition:0.3s;
+}
+
+.card:hover {
+  transform:scale(1.05);
+}
+
+/* POPUP */
+.overlay {
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  display:none;
+  justify-content:center;
+  align-items:center;
+}
+
+.popup {
+  background:rgba(255,255,255,0.08);
+  backdrop-filter: blur(15px);
+  padding:30px;
+  border-radius:20px;
+  width:320px;
+  text-align:center;
+  animation:zoom 0.3s ease;
+  position:relative;
+}
+
+@keyframes zoom {
+  from {transform:scale(0.5); opacity:0;}
+  to {transform:scale(1); opacity:1;}
+}
+
+.close {
+  position:absolute;
+  top:10px;
+  right:15px;
+  cursor:pointer;
+  font-size:20px;
+  color:#00e6c3;
 }
 
 /* CONTACT */
-.contact {
+.contact-box {
   padding:40px;
 }
 
@@ -81,29 +123,11 @@ input, textarea {
 }
 
 button {
+  padding:12px 20px;
   background:#00e6c3;
   border:none;
-  padding:10px 20px;
   border-radius:20px;
-}
-
-/* POPUP */
-#overlay {
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  background:rgba(0,0,0,0.7);
-  display:none;
-  justify-content:center;
-  align-items:center;
-}
-
-.popup {
-  background:white;
-  color:black;
-  padding:20px;
-  border-radius:10px;
-  width:300px;
+  cursor:pointer;
 }
 </style>
 </head>
@@ -111,114 +135,77 @@ button {
 <body>
 
 <!-- HERO -->
-<section class="hero">
+<div class="hero">
+  <div>
+    <h3>From Idea to <span>Execution</span></h3>
+    <h1>SURYA PRASATH</h1>
+    <p>Store Manager | Blinkit</p>
 
-<div>
-<h3>From Idea to <span>Execution</span></h3>
-<h1>SURYA PRASATH</h1>
-<p>Store Manager | Blinkit</p>
+    <div class="btns">
+      <a href="#work" class="projects"><i class="fa fa-briefcase"></i> Work</a>
+      <a href="#contact" class="contact"><i class="fa fa-envelope"></i> Contact</a>
+      <a href="resume.docx" download class="resume"><i class="fa fa-download"></i> Resume</a>
+      <a href="https://wa.me/916382799407" target="_blank" class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="https://www.linkedin.com/in/surya-prasath-65b79837b/" target="_blank" class="linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
+    </div>
+  </div>
 
-<div class="buttons">
-
-<button onclick="scrollToProjects()">Projects</button>
-<button onclick="scrollToContact()">Contact</button>
-
-<!-- ✅ RESUME -->
-<a href="./resume.pdf" download>
-<button class="primary">
-<i class="fa-solid fa-download"></i> Resume
-</button>
-</a>
-
-<!-- ✅ WHATSAPP -->
-<a href="https://wa.me/916382799407" target="_blank">
-<button class="primary">
-<i class="fa-brands fa-whatsapp"></i> WhatsApp
-</button>
-</a>
-
-<!-- ✅ LINKEDIN -->
-<a href="https://www.linkedin.com/in/YOUR-ID" target="_blank">
-<button class="outline">
-<i class="fa-brands fa-linkedin"></i> LinkedIn
-</button>
-</a>
-
-</div>
+  <img src="profile.jpg">
 </div>
 
-<img src="profile.jpg">
+<!-- WORK EXPERIENCE -->
+<h2 style="padding-left:40px">Work Experience</h2>
 
-</section>
+<div class="grid" id="work">
+  <div class="card" onclick="openPopup('blinkit')">
+    <h3>Blinkit</h3>
+    <p>Store Manager</p>
+  </div>
 
-<!-- PROJECTS -->
-<section class="grid" id="projects">
-
-<div class="glass" onclick="openCard('blinkit')">
-<h3>Blinkit</h3>
-<p>Store Manager</p>
+  <div class="card" onclick="openPopup('shadowfax')">
+    <h3>Shadowfax</h3>
+    <p>Team Leader</p>
+  </div>
 </div>
-
-<div class="glass" onclick="openCard('shadowfax')">
-<h3>Shadowfax</h3>
-<p>Team Leader</p>
-</div>
-
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="contact">
-
-<h2>Contact Me</h2>
-
-<form action="https://formspree.io/f/xqewovva" method="POST">
-
-<input type="text" name="name" placeholder="Your Name" required>
-<input type="email" name="email" placeholder="Your Email" required>
-<textarea name="message" placeholder="Your Message" required></textarea>
-
-<button type="submit">Send Message</button>
-
-</form>
-
-</section>
 
 <!-- POPUP -->
-<div id="overlay">
-<div class="popup" id="content"></div>
+<div class="overlay" id="overlay">
+  <div class="popup" id="popup">
+    <span class="close" onclick="closePopup()">✖</span>
+    <h2 id="title"></h2>
+    <p id="desc"></p>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<div class="contact-box" id="contact">
+  <h2>Contact Me</h2>
+
+  <form action="https://formspree.io/f/xqewovva" method="POST">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <textarea name="message" placeholder="Your Message"></textarea>
+    <button type="submit">Send Message</button>
+  </form>
 </div>
 
 <script>
-function openCard(type){
+function openPopup(type) {
+  document.getElementById("overlay").style.display="flex";
 
-let data="";
+  if(type==="blinkit"){
+    document.getElementById("title").innerText="Blinkit";
+    document.getElementById("desc").innerText="Managing store operations, inventory, manpower, and ensuring smooth quick commerce delivery.";
+  }
 
-if(type=="blinkit"){
-data=`
-<h2>Blinkit</h2>
-<p>Store operations, inventory tracking, and team management in quick commerce.</p>`;
+  if(type==="shadowfax"){
+    document.getElementById("title").innerText="Shadowfax";
+    document.getElementById("desc").innerText="Handled delivery operations, rider management, and logistics coordination.";
+  }
 }
 
-if(type=="shadowfax"){
-data=`
-<h2>Shadowfax</h2>
-<p>Handled delivery operations and team performance as Team Leader.</p>`;
-}
-
-document.getElementById("content").innerHTML=data;
-document.getElementById("overlay").style.display="flex";
-}
-
-document.getElementById("overlay").onclick=function(){
-this.style.display="none";
-}
-
-function scrollToProjects(){
-document.getElementById("projects").scrollIntoView({behavior:"smooth"});
-}
-
-function scrollToContact(){
-document.getElementById("contact").scrollIntoView({behavior:"smooth"});
+function closePopup(){
+  document.getElementById("overlay").style.display="none";
 }
 </script>
 
