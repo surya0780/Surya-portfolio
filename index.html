@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio</title>
+<title>Surya Prasath Portfolio</title>
 
 <style>
 body {
@@ -24,8 +24,8 @@ body {
 }
 
 .hero img {
-  width: 200px;
-  border-radius: 15px;
+  width: 220px;
+  border-radius: 20px;
 }
 
 .grid {
@@ -55,7 +55,6 @@ button {
   cursor: pointer;
 }
 
-/* popup */
 #overlay {
   position: fixed;
   top:0;
@@ -73,7 +72,7 @@ button {
   color:black;
   padding: 20px;
   border-radius: 10px;
-  width: 300px;
+  width: 320px;
 }
 </style>
 
@@ -87,16 +86,20 @@ button {
   <div class="hero">
     <div>
       <h2>From Idea to Execution</h2>
-      <h1>YOUR NAME</h1>
-      <p>Store Manager | Operations | Data Handling</p>
+      <h1>SURYA PRASATH</h1>
+      <p>Store Manager | Blinkit | Operations & Data</p>
+
+      <p>📞 +91 6382799407</p>
+      <p>📧 l.suryaprasath1@gmail.com</p>
 
       <button onclick="openPopup('about')">About Me</button>
     </div>
 
-    <img src="https://via.placeholder.com/200">
+    <!-- 🔥 YOUR PHOTO HERE -->
+    <img src="profile.jpg">
   </div>
 
-  <!-- PROJECTS -->
+  <!-- CARDS -->
   <div class="grid">
 
     <div class="card" onclick="openPopup('blinkit')">
@@ -104,14 +107,14 @@ button {
       <p>Store Manager</p>
     </div>
 
-    <div class="card" onclick="openPopup('dashboard')">
-      <h3>Dashboard</h3>
-      <p>Google Sheets Automation</p>
+    <div class="card" onclick="openPopup('shadowfax')">
+      <h3>Shadowfax</h3>
+      <p>Team Leader</p>
     </div>
 
-    <div class="card" onclick="openPopup('inventory')">
-      <h3>Inventory</h3>
-      <p>Stock Management</p>
+    <div class="card" onclick="openPopup('skills')">
+      <h3>Skills</h3>
+      <p>Operations & Management</p>
     </div>
 
   </div>
@@ -132,7 +135,11 @@ function openPopup(type) {
   if(type === "about") {
     content = `
       <h2>About Me</h2>
-      <p>Working as Store Manager in Blinkit handling operations and data.</p>
+      <p>
+      Dedicated logistics professional with 3+ years experience in supply chain,
+      warehouse, and store operations. Skilled in inventory management,
+      data tracking, and process improvement.
+      </p>
     `;
   }
 
@@ -140,26 +147,37 @@ function openPopup(type) {
     content = `
       <h2>Blinkit Experience</h2>
       <p>
-      Managed daily store operations in a quick commerce environment.<br><br>
-      ✔ Inventory tracking<br>
-      ✔ SKU monitoring<br>
-      ✔ Picking & Packing accuracy<br>
-      ✔ Team handling
+      ✔ Managing daily store operations<br>
+      ✔ Inventory & SKU tracking<br>
+      ✔ Team handling & manpower control<br>
+      ✔ Ensuring smooth order fulfillment<br>
+      ✔ Working in quick commerce environment
       </p>
     `;
   }
 
-  if(type === "dashboard") {
+  if(type === "shadowfax") {
     content = `
-      <h2>Dashboard</h2>
-      <p>Created automated dashboard using Google Sheets and Apps Script.</p>
+      <h2>Shadowfax</h2>
+      <p>
+      ✔ Managed delivery operations<br>
+      ✔ Improved team performance<br>
+      ✔ Ensured timely deliveries<br>
+      ✔ Handled logistics operations
+      </p>
     `;
   }
 
-  if(type === "inventory") {
+  if(type === "skills") {
     content = `
-      <h2>Inventory System</h2>
-      <p>Handled stock analysis and variance tracking system.</p>
+      <h2>Skills</h2>
+      <p>
+      ✔ Leadership & Team Handling<br>
+      ✔ Inventory Management<br>
+      ✔ Problem Solving<br>
+      ✔ Operations Optimization<br>
+      ✔ Data Analysis
+      </p>
     `;
   }
 
