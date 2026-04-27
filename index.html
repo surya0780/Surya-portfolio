@@ -164,13 +164,17 @@ input, textarea {
 </section>
 
 <!-- CONTACT -->
-<section class="contact" id="contact">
-  <h2>Let's Build Something</h2>
-  <input placeholder="Your Name">
-  <input placeholder="Your Email">
-  <textarea placeholder="Message"></textarea>
-  <button class="primary">Send Message</button>
-</section>
+<form action="https://formspree.io/f/xqewovva" method="POST">
+
+  <input type="text" name="name" placeholder="Your Name" required>
+
+  <input type="email" name="email" placeholder="Your Email" required>
+
+  <textarea name="message" placeholder="Your Message" required></textarea>
+
+  <button type="submit">Send Message</button>
+
+</form>
 
 <!-- POPUP -->
 <div id="overlay">
